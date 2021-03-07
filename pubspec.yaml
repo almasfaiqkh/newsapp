@@ -1,0 +1,102 @@
+name: newsapp
+description: A new Flutter application.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  circular_profile_avatar: ^1.0.6
+  flutter:
+    sdk: flutter
+
+  provider: ^4.0.4
+  firebase_analytics: ^5.0.2
+  firebase_core: ^0.4.0+9
+  firebase_auth: ^0.14.0+5
+  cloud_firestore: ^0.12.9+5
+  cupertino_icons: ^0.1.3
+  fluttertoast: ^3.1.0
+
+dev_dependencies:
+  flutter_launcher_icons: "^0.8.0"
+  flutter_test:
+    sdk: flutter
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "images/logo.png"
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - images/trending.png
+    - images/home-header.png
+    - images/logo.png
+    - images/profil.png
+    - images/background.png
+    - images/kategori-1.png
+    - images/kategori-2.png
+    - images/kategori-3.png
+    - images/kategori-4.png
+    - images/kategori-5.png
+    - images/kategori-6.png
+    - images/logo-cnn.png
+    - images/logo-detik.png
+    - images/logo-kompas.png
+    - images/lokal-1.png
+    - images/lokal-2.png
+    - images/lokal-3.png
+    - images/lokal-4.png
+    - images/lokal-5.png
+    - images/lokal-6.png
+    - images/umum-1.png
+    - images/umum-2.png
+    - images/umum-3.png
+    - images/umum-4.png
+    - images/umum-5.png
+    - images/umum-6.png
+    - images/tek-1.png
+    - images/tek-2.png
+    - images/tek-3.png
+    - images/tek-4.png
+    - images/tek-5.png
+    - images/tek-6.png
+    - images/women-1.png
+    - images/women-2.png
+    - images/women-3.png
+    - images/women-4.png
+    - images/women-5.png
+    - images/women-6.png
+    - images/style-1.png
+    - images/style-2.png
+    - images/style-3.png
+    - images/style-4.png
+    - images/style-5.png
+    - images/style-6.png
+    - images/eco-1.png
+    - images/eco-2.png
+    - images/eco-3.png
+    - images/eco-4.png
+    - images/eco-5.png
+    - images/eco-6.png
+    - images/or-1.png
+    - images/or-2.png
+    - images/or-3.png
+    - images/or-4.png
+    - images/or-5.png
+    - images/or-6.png
+    - images/fun-1.png
+    - images/fun-2.png
+    - images/fun-3.png
+    - images/fun-4.png
+    - images/fun-5.png
+    - images/fun-6.png
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter-Regular.ttf
+          weight: 400

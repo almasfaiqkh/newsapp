@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "704398263256",
+    "project_id": "newsapp-e5201",
+    "storage_bucket": "newsapp-e5201.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704398263256:android:fe3ca4b02e589e5c4b28ad",
+        "android_client_info": {
+          "package_name": "alfinabalqis.newsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704398263256-f7hut5gdk9eb9fmnfqng44p6mrnrnac5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzk7yCnP-Q2X3q4CPM3kE1_VPzUWl2r9E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704398263256-f7hut5gdk9eb9fmnfqng44p6mrnrnac5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
