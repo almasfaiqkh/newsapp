@@ -78,13 +78,13 @@ class _RegisterPageState extends State<RegisterPage> {
           minWidth: 90.0,
           height: 40.0,
           onPressed: () async {
-            Navigator.pop(context);
             Fluttertoast.showToast(
                 msg: "Registered Successfuly",
                 toastLength: Toast.LENGTH_SHORT,
                 gravity: ToastGravity.BOTTOM);
-            await AuthServices.signUp(
-                nameController.text, emailController.text, passwordController.text);
+            await AuthServices.signUp(nameController.text, emailController.text,
+                passwordController.text);
+            Navigator.pop(context);
           },
           color: Color.fromRGBO(255, 151, 55, 1),
           child: Text('simpan',

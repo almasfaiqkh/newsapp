@@ -14,6 +14,7 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
+    Wrapper.tag: (context) => Wrapper(),
     LoginPage.tag: (context) => LoginPage(),
     HomePage.tag: (context) => HomePage(),
     RegisterPage.tag: (context) => RegisterPage(),
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             fontFamily: 'Inter',
           ),
-          home: Wrapper(),
+          home: SplashScreenPage(),
 
         ));
   }

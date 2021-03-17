@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:newsapp/homenews_page.dart';
 import 'package:provider/provider.dart';
 
 import 'auth.dart';
@@ -18,6 +21,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseUser firebaseUser = Provider.of<FirebaseUser>(context);
+
     final title = Text(
       'Masuk',
       style: TextStyle(
@@ -43,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
 
     final password = TextFormField(
       controller: passwordController,
+      obscureText: true,
       autofocus: false,
       style: TextStyle(height: 2),
       decoration: InputDecoration(
@@ -53,6 +59,17 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
 
+/*    startTime() async {
+      var duration = new Duration(seconds: 6);
+      return new Timer(duration, () {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) {
+            return HomeNewsPage();
+          }),
+        );
+      });
+    };*/
+
     final loginButton = Padding(
       padding: const EdgeInsets.only(top: 15.0),
       child: Material(
@@ -61,8 +78,41 @@ class _LoginPageState extends State<LoginPage> {
           minWidth: 90.0,
           height: 40.0,
           onPressed: () async {
-            await AuthServices.signIn(
+/*            await AuthServices.signIn(
                 emailController.text, passwordController.text);
+            if (emailController.text == null ||
+                emailController.text.isEmpty ||
+                passwordController.text == null ||
+                passwordController.text.isEmpty) {
+              Fluttertoast.showToast(
+                  msg: "Please insert email or password!",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIos: 1);
+            } else {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => HomeNewsPage()));
+            }*/
+            if (emailController.text == null ||
+                emailController.text.isEmpty ||
+                passwordController.text == null ||
+                passwordController.text.isEmpty) {
+              Fluttertoast.showToast(
+                  msg: "Please insert email or password!",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIos: 1);
+            }
+
+            if (firebaseUser != null) {
+              // wrong call in wrong place!
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => HomeNewsPage()));
+              Navigator.pop(context);
+            } else {
+              await AuthServices.signIn(
+                  emailController.text, passwordController.text);
+            }
           },
           color: Color.fromRGBO(255, 151, 55, 1),
           child: Text('masuk',

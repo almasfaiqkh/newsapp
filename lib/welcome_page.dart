@@ -3,6 +3,7 @@ import 'package:newsapp/splashscreen_view.dart';
 
 import 'RegisterPage/login_page.dart';
 import 'home_page.dart';
+import 'RegisterPage/auth.dart';
 
 class WelcomePage extends StatelessWidget {
   static String tag = 'welcome-page';
@@ -24,8 +25,10 @@ class WelcomePage extends StatelessWidget {
                 decoration: TextDecoration.underline,
                 color: Color.fromRGBO(255,151,55,1),),
             ),
-              onPressed: () {
+              onPressed: () async {
+                await AuthServices.signInAnonymous();
                 Navigator.of(context).pushNamed(HomePage.tag);
+                Navigator.pop(context);
               },)
           ],
         ),

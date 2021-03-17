@@ -1,9 +1,11 @@
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:newsapp/ProfilPage/password_page.dart';
 import 'package:newsapp/home_page.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -13,7 +15,10 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+    FirebaseUser user = Provider.of<FirebaseUser>(context);
+
     final name = TextFormField(
+      initialValue: '${user.displayName}',
       keyboardType: TextInputType.text,
       autofocus: false,
       decoration: InputDecoration(
@@ -24,6 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
 
     final email = TextFormField(
+      initialValue: '${user.email}',
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       decoration: InputDecoration(
@@ -33,7 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
 
-    final telp = TextFormField(
+    /*final telp = TextFormField(
       keyboardType: TextInputType.text,
       autofocus: false,
       decoration: InputDecoration(
@@ -51,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
         hintText: 'Jakarta',
         contentPadding: EdgeInsets.all(10),
       ),
-    );
+    );*/
 
     final changePass = new FlatButton(
       child: Text('Ganti kata sandi',
@@ -100,16 +106,16 @@ class _ProfilePageState extends State<ProfilePage> {
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(top: 20),
-              width: 150,
-              height: 150,
+              width: 100,
+              height: 100,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('images/profil.png'),
+                    image: AssetImage('images/guest.png'),
                 ),
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 0, bottom: 30),
+              padding: EdgeInsets.only(top: 20, bottom: 30),
               child: Center(
                 child: Text('Ganti Foto Profil',
                   style: TextStyle(
@@ -124,10 +130,10 @@ class _ProfilePageState extends State<ProfilePage> {
             SizedBox(height: 5,),
             email,
             SizedBox(height: 20,),
-            telp,
+/*            telp,
             SizedBox(height: 20,),
             location,
-            SizedBox(height: 5,),
+            SizedBox(height: 5,),*/
             changePass,
             passwordButton
           ],

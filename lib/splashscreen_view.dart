@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:newsapp/welcome_page.dart';
 import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:newsapp/wrapper.dart';
 
 class SplashScreenPage extends StatefulWidget {
   static String tag = 'splashscreen-page';
@@ -11,25 +12,26 @@ class SplashScreenPage extends StatefulWidget {
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
     startSplashScreen();
   }
 
-  startSplashScreen() async{
+  startSplashScreen() async {
     var duration = const Duration(seconds: 3);
-    return Timer(duration,(){
+    return Timer(duration, () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
-          return WelcomePage();
+          return Wrapper();
         }),
       );
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(255,151,55,1),
+      backgroundColor: Color.fromRGBO(255, 151, 55, 1),
       body: Center(
         child: Image.asset(
           "images/logo.png",
