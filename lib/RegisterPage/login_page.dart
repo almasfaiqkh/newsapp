@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newsapp/homenews_page.dart';
 import 'package:provider/provider.dart';
 
+import '../home_page.dart';
 import 'auth.dart';
 import 'register_page.dart';
 
@@ -93,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => HomeNewsPage()));
             }*/
-            if (emailController.text == null ||
+            /*if (emailController.text == null ||
                 emailController.text.isEmpty ||
                 passwordController.text == null ||
                 passwordController.text.isEmpty) {
@@ -112,6 +113,31 @@ class _LoginPageState extends State<LoginPage> {
             } else {
               await AuthServices.signIn(
                   emailController.text, passwordController.text);
+            }*/
+            SignInSignUpResult result = await AuthServices.signInWithEmail(
+                email: emailController.text, pass: passwordController.text);
+            if (result.user != null) {
+              // Go to Profile Page
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomePage(user: result.user)));
+            } else {
+              // Show Dialog
+              showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text('Error'),
+                    content: Text(result.message),
+                    actions: <Widget>[
+                      FlatButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text('OK'),
+                      )
+                    ],
+                  ));
             }
           },
           color: Color.fromRGBO(255, 151, 55, 1),
@@ -141,7 +167,10 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           onPressed: () {
-            Navigator.of(context).pushNamed(RegisterPage.tag);
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => RegisterPage()));
           },
         )
       ],

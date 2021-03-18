@@ -34,6 +34,7 @@ flutter:
   uses-material-design: true
   assets:
     - images/
+    - images/home.png
     - images/trending.png
     - images/home-header.png
     - images/logo.png

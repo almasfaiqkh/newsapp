@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:newsapp/RegisterPage/login_page.dart';
+import 'package:newsapp/home_page.dart';
 
 import 'auth.dart';
 
@@ -78,13 +79,31 @@ class _RegisterPageState extends State<RegisterPage> {
           minWidth: 90.0,
           height: 40.0,
           onPressed: () async {
-            Fluttertoast.showToast(
-                msg: "Registered Successfuly",
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM);
-            await AuthServices.signUp(nameController.text, emailController.text,
-                passwordController.text);
-            Navigator.pop(context);
+            SignInSignUpResult result = await AuthServices.createUser(
+                name: nameController.text,
+                email: emailController.text,
+                pass: passwordController.text);
+            if (result.user != null) {
+              // Go to Profile Page
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomePage(user: result.user)));
+            } else {
+              // Show Dialog
+              showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                        title: Text('Error'),
+                        content: Text(result.message),
+                        actions: <Widget>[
+                          FlatButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text('OK'),
+                          )
+                        ],
+                      ));
+            }
           },
           color: Color.fromRGBO(255, 151, 55, 1),
           child: Text('simpan',

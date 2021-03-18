@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp/ProfilPage/profil_page.dart';
 import 'package:newsapp/RegisterPage/auth.dart';
+import 'package:newsapp/welcome_page.dart';
 import 'package:provider/provider.dart';
 
 import 'Web/web_view_container.dart';
@@ -21,11 +22,11 @@ class HomePage extends StatelessWidget {
   final String title;
   TabController tabController;
 
-  HomePage({Key key, this.title}) : super(key: key);
+  HomePage({Key key, this.title, FirebaseUser user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    FirebaseUser fUser = Provider.of<FirebaseUser>(context);
+    FirebaseUser user = Provider.of<FirebaseUser>(context);
 
     return Scaffold(
       appBar: new AppBar(
@@ -42,8 +43,8 @@ class HomePage extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text('${fUser.displayName}'),
-              accountEmail: Text('${fUser.email}'),
+              accountName: Text(''),
+              accountEmail: Text(''),
               currentAccountPicture: new Container(
                 margin: EdgeInsets.all(10),
                 width: 30,
@@ -51,7 +52,7 @@ class HomePage extends StatelessWidget {
                 decoration: new BoxDecoration(
                     shape: BoxShape.circle,
                     image: new DecorationImage(
-                        image: AssetImage('images/guest.png'),
+                        image: AssetImage(''),
                         fit: BoxFit.cover)),
               ),
               decoration: BoxDecoration(
@@ -91,6 +92,10 @@ class HomePage extends StatelessWidget {
               title: Text('Log out'),
               onTap: () async {
                 await AuthServices.signOut();
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => WelcomePage()));
               },
             )
           ],
